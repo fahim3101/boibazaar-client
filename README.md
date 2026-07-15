@@ -47,7 +47,7 @@ client/
 
 ## Environment Variables
 
-Copy `.env.local.example` to `.env.local` and fill in:
+`.env.local` fill in:
 
 | Variable | Description |
 |---|---|
