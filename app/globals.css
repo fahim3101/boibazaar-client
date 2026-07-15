@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f6f4ef;
+  color: #1b2a4a;
+}
+
+/* Index-card style stamp badge, used for subject/condition tags */
+.stamp-badge {
+  border: 1.5px solid currentColor;
+  border-radius: 4px;
+  padding: 0.15rem 0.55rem;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: inline-block;
+  transform: rotate(-1deg);
+}
+
+/* Torn-edge / perforation look on catalog cards */
+.perforated-top {
+  background-image: radial-gradient(circle, #f6f4ef 3px, transparent 3px);
+  background-size: 14px 8px;
+  background-position: center top;
+  background-repeat: repeat-x;
+  height: 6px;
+}
+
+.container-page {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* Focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #e8a33d;
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f6f4ef;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9c2b2;
+  border-radius: 8px;
+}
