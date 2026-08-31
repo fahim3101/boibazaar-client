@@ -3,5 +3,11 @@
   "rules": {
     "@next/next/no-img-element": "warn",
     "react/no-unescaped-entities": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*", "**/*.test.*", "**/*.spec.*"],
+      "env": { "jest": true }
+    }
+  ]
 }
