@@ -22,11 +22,10 @@ export default function AboutPage() {
       <span className="stamp-badge border-amber text-amber-dark">Our story</span>
       <h1 className="mt-3 font-display text-4xl font-bold text-ink">About BoiBazaar</h1>
       <p className="mt-4 max-w-2xl leading-relaxed text-ink/70">
-        BoiBazaar is a marketplace built specifically for university students in
-        Bangladesh to buy and sell secondhand textbooks and study materials.
-        New textbooks are expensive and often used for only a single semester —
-        BoiBazaar makes it easy to pass them on to the next student who needs them,
-        at a price that actually makes sense.
+        BoiBazaar is a marketplace built specifically for university students in Bangladesh to buy
+        and sell secondhand textbooks and study materials. New textbooks are expensive and often
+        used for only a single semester — BoiBazaar makes it easy to pass them on to the next
+        student who needs them, at a price that actually makes sense.
       </p>
 
       <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -41,10 +40,10 @@ export default function AboutPage() {
       <div className="mt-14 rounded-card bg-ink p-8 text-paper">
         <h2 className="font-display text-2xl font-bold">Why I built this</h2>
         <p className="mt-3 max-w-2xl leading-relaxed text-paper/70">
-          As a student myself, I spent every semester scrolling through scattered
-          Facebook groups trying to find secondhand copies of required textbooks.
-          BoiBazaar brings that scattered process into one organized, searchable
-          place — built with the same tools I use to learn full-stack development.
+          As a student myself, I spent every semester scrolling through scattered Facebook groups
+          trying to find secondhand copies of required textbooks. BoiBazaar brings that scattered
+          process into one organized, searchable place — built with the same tools I use to learn
+          full-stack development.
         </p>
       </div>
     </div>

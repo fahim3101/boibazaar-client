@@ -49,7 +49,9 @@ export default function ManageItemsPage() {
   };
 
   if (authLoading || !user) {
-    return <div className="container-page py-20 text-center text-ink/60">Checking your session…</div>;
+    return (
+      <div className="container-page py-20 text-center text-ink/60">Checking your session…</div>
+    );
   }
 
   return (
@@ -58,7 +60,9 @@ export default function ManageItemsPage() {
         <div>
           <span className="stamp-badge border-sage text-sage">Your shelf</span>
           <h1 className="mt-3 font-display text-3xl font-bold text-ink">My listings</h1>
-          <p className="mt-1 text-ink/60">{books.length} book{books.length !== 1 ? "s" : ""} posted by you.</p>
+          <p className="mt-1 text-ink/60">
+            {books.length} book{books.length !== 1 ? "s" : ""} posted by you.
+          </p>
         </div>
         <Link
           href="/items/add"
@@ -78,8 +82,12 @@ export default function ManageItemsPage() {
         </div>
       ) : books.length === 0 ? (
         <div className="mt-10 rounded-card bg-white p-10 text-center shadow-card">
-          <p className="font-display text-lg font-semibold text-ink">You haven&apos;t listed any books yet</p>
-          <p className="mt-2 text-sm text-ink/60">Post your first textbook and reach students across Dhaka.</p>
+          <p className="font-display text-lg font-semibold text-ink">
+            You haven&apos;t listed any books yet
+          </p>
+          <p className="mt-2 text-sm text-ink/60">
+            Post your first textbook and reach students across Dhaka.
+          </p>
           <Link
             href="/items/add"
             className="mt-5 inline-block rounded-card bg-amber px-5 py-2.5 text-sm font-semibold text-ink hover:bg-amber-dark"
@@ -104,7 +112,11 @@ export default function ManageItemsPage() {
                 <tr key={book._id} className="border-t border-paper-dark">
                   <td className="flex items-center gap-3 p-4">
                     <div className="h-14 w-10 shrink-0 overflow-hidden rounded-sm">
-                      <BookCoverSVG title={book.title} subject={book.subject} className="h-full w-full" />
+                      <BookCoverSVG
+                        title={book.title}
+                        subject={book.subject}
+                        className="h-full w-full"
+                      />
                     </div>
                     <div>
                       <p className="line-clamp-1 font-semibold text-ink">{book.title}</p>

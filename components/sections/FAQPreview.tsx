@@ -22,9 +22,14 @@ export default function FAQPreview() {
         <div className="flex items-end justify-between">
           <div>
             <span className="stamp-badge border-sage text-sage">Quick answers</span>
-            <h2 className="mt-3 font-display text-3xl font-bold text-ink">Frequently asked questions</h2>
+            <h2 className="mt-3 font-display text-3xl font-bold text-ink">
+              Frequently asked questions
+            </h2>
           </div>
-          <Link href="/faq" className="hidden text-sm font-semibold text-ink hover:text-amber sm:block">
+          <Link
+            href="/faq"
+            className="hidden text-sm font-semibold text-ink hover:text-amber sm:block"
+          >
             View all FAQs →
           </Link>
         </div>
@@ -38,7 +43,10 @@ export default function FAQPreview() {
           ))}
         </div>
 
-        <Link href="/faq" className="mt-6 block text-sm font-semibold text-ink hover:text-amber sm:hidden">
+        <Link
+          href="/faq"
+          className="mt-6 block text-sm font-semibold text-ink hover:text-amber sm:hidden"
+        >
           View all FAQs →
         </Link>
       </div>

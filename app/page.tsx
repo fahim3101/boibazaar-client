@@ -47,7 +47,9 @@ export default async function HomePage() {
         totalBooks={totalBooks}
         totalUniversities={totalUniversities}
         avgPrice={avgPrice}
-        subjectCounts={subjectCounts.length ? subjectCounts : [{ subject: "No data yet", count: 0 }]}
+        subjectCounts={
+          subjectCounts.length ? subjectCounts : [{ subject: "No data yet", count: 0 }]
+        }
       />
       <TrustSafety />
       <Testimonials />

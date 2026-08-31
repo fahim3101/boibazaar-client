@@ -10,8 +10,8 @@ export default function Footer() {
             BoiBazaar
           </div>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-paper/60">
-            A student-to-student marketplace for secondhand textbooks and study
-            materials across Bangladeshi universities.
+            A student-to-student marketplace for secondhand textbooks and study materials across
+            Bangladeshi universities.
           </p>
         </div>
 
@@ -20,10 +20,26 @@ export default function Footer() {
             Explore
           </h4>
           <ul className="mt-4 space-y-2 text-sm">
-            <li><Link href="/explore" className="hover:text-amber">Browse books</Link></li>
-            <li><Link href="/items/add" className="hover:text-amber">Sell a book</Link></li>
-            <li><Link href="/items/manage" className="hover:text-amber">My listings</Link></li>
-            <li><Link href="/register" className="hover:text-amber">Create account</Link></li>
+            <li>
+              <Link href="/explore" className="hover:text-amber">
+                Browse books
+              </Link>
+            </li>
+            <li>
+              <Link href="/items/add" className="hover:text-amber">
+                Sell a book
+              </Link>
+            </li>
+            <li>
+              <Link href="/items/manage" className="hover:text-amber">
+                My listings
+              </Link>
+            </li>
+            <li>
+              <Link href="/register" className="hover:text-amber">
+                Create account
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -32,9 +48,21 @@ export default function Footer() {
             Company
           </h4>
           <ul className="mt-4 space-y-2 text-sm">
-            <li><Link href="/about" className="hover:text-amber">About us</Link></li>
-            <li><Link href="/contact" className="hover:text-amber">Contact</Link></li>
-            <li><Link href="/faq" className="hover:text-amber">Help &amp; FAQ</Link></li>
+            <li>
+              <Link href="/about" className="hover:text-amber">
+                About us
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-amber">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link href="/faq" className="hover:text-amber">
+                Help &amp; FAQ
+              </Link>
+            </li>
           </ul>
         </div>
 

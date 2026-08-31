@@ -85,7 +85,9 @@ export default function RegisterPage() {
             />
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">University (optional)</label>
+            <label className="text-xs font-semibold uppercase text-ink/50">
+              University (optional)
+            </label>
             <input
               type="text"
               value={university}

@@ -47,13 +47,14 @@ export default function BookCoverSVG({
 }: CoverProps) {
   const seed = title + subject;
   const pattern = getPatternIndex(seed);
-  const initials = title
-    .split(" ")
-    .filter((w) => w.length > 2)
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase() || title.slice(0, 2).toUpperCase();
+  const initials =
+    title
+      .split(" ")
+      .filter((w) => w.length > 2)
+      .slice(0, 2)
+      .map((w) => w[0])
+      .join("")
+      .toUpperCase() || title.slice(0, 2).toUpperCase();
 
   const schemes = [
     { bg: PALETTE.ink, fg: PALETTE.paper, accent: PALETTE.amber },
@@ -67,12 +68,7 @@ export default function BookCoverSVG({
 
   if (variant === "spine") {
     return (
-      <svg
-        viewBox="0 0 60 300"
-        className={className}
-        role="img"
-        aria-label={`Spine of ${title}`}
-      >
+      <svg viewBox="0 0 60 300" className={className} role="img" aria-label={`Spine of ${title}`}>
         <rect width="60" height="300" fill={scheme.bg} />
         <rect x="6" y="20" width="48" height="3" fill={scheme.accent} />
         <rect x="6" y="277" width="48" height="3" fill={scheme.accent} />
@@ -113,8 +109,8 @@ export default function BookCoverSVG({
               opacity: 0.85,
             }}
           >
-            A well-loved copy of {title} by {author || "the original author"}, passed on
-            through BoiBazaar to its next reader.
+            A well-loved copy of {title} by {author || "the original author"}, passed on through
+            BoiBazaar to its next reader.
           </div>
         </foreignObject>
         <g transform="translate(20 210)">
@@ -146,12 +142,7 @@ export default function BookCoverSVG({
 
   // Front cover — pattern varies by index 0-5
   return (
-    <svg
-      viewBox="0 0 240 320"
-      className={className}
-      role="img"
-      aria-label={`Cover of ${title}`}
-    >
+    <svg viewBox="0 0 240 320" className={className} role="img" aria-label={`Cover of ${title}`}>
       <rect width="240" height="320" fill={scheme.bg} />
 
       {pattern === 0 && (
@@ -160,13 +151,27 @@ export default function BookCoverSVG({
           <polygon points="240,0 240,60 180,0" fill={scheme.accent} opacity="0.4" />
         </>
       )}
-      {pattern === 1 && (
-        <circle cx="200" cy="60" r="34" fill={scheme.accent} opacity="0.5" />
-      )}
+      {pattern === 1 && <circle cx="200" cy="60" r="34" fill={scheme.accent} opacity="0.5" />}
       {pattern === 2 && (
         <>
-          <rect x="14" y="14" width="212" height="292" fill="none" stroke={scheme.fg} strokeWidth="2" />
-          <rect x="0" y="230" width="240" height="18" fill={scheme.accent} transform="skewY(-3)" opacity="0.7" />
+          <rect
+            x="14"
+            y="14"
+            width="212"
+            height="292"
+            fill="none"
+            stroke={scheme.fg}
+            strokeWidth="2"
+          />
+          <rect
+            x="0"
+            y="230"
+            width="240"
+            height="18"
+            fill={scheme.accent}
+            transform="skewY(-3)"
+            opacity="0.7"
+          />
         </>
       )}
       {pattern === 3 && (
@@ -187,12 +192,30 @@ export default function BookCoverSVG({
       {pattern === 5 && (
         <>
           {Array.from({ length: 8 }).map((_, i) => (
-            <rect key={i} x={-40 + i * 40} y="0" width="16" height="320" fill={scheme.fg} opacity="0.08" transform="skewX(-10)" />
+            <rect
+              key={i}
+              x={-40 + i * 40}
+              y="0"
+              width="16"
+              height="320"
+              fill={scheme.fg}
+              opacity="0.08"
+              transform="skewX(-10)"
+            />
           ))}
         </>
       )}
 
-      <rect x="18" y="18" width="204" height="284" fill="none" stroke={scheme.accent} strokeWidth="1" opacity="0.6" />
+      <rect
+        x="18"
+        y="18"
+        width="204"
+        height="284"
+        fill="none"
+        stroke={scheme.accent}
+        strokeWidth="1"
+        opacity="0.6"
+      />
 
       <foreignObject x="28" y="120" width="184" height="110">
         <div

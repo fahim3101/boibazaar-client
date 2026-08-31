@@ -24,14 +24,15 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-paper" style={{ minHeight: "68vh" }}>
       <div className="container-page relative flex min-h-[68vh] flex-col items-center justify-center gap-10 py-16 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-xl text-center lg:text-left">
-          <span className="stamp-badge border-sage text-sage">Dhaka · Chattogram · Sylhet · Rajshahi</span>
+          <span className="stamp-badge border-sage text-sage">
+            Dhaka · Chattogram · Sylhet · Rajshahi
+          </span>
           <h1 className="mt-5 font-display text-4xl font-bold leading-tight text-ink sm:text-5xl">
             Your next textbook is already on someone&apos;s shelf.
           </h1>
           <p className="mt-4 text-base leading-relaxed text-ink/70 sm:text-lg">
-            BoiBazaar connects students across Bangladeshi universities to buy and
-            sell secondhand textbooks, notes, and study guides — at a fraction of
-            the bookstore price.
+            BoiBazaar connects students across Bangladeshi universities to buy and sell secondhand
+            textbooks, notes, and study guides — at a fraction of the bookstore price.
           </p>
 
           <form

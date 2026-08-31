@@ -93,16 +93,23 @@ export default function AddItemPage() {
   };
 
   if (authLoading || !user) {
-    return <div className="container-page py-20 text-center text-ink/60">Checking your session…</div>;
+    return (
+      <div className="container-page py-20 text-center text-ink/60">Checking your session…</div>
+    );
   }
 
   return (
     <div className="container-page max-w-2xl py-10">
       <span className="stamp-badge border-amber text-amber-dark">New listing</span>
       <h1 className="mt-3 font-display text-3xl font-bold text-ink">Sell a book</h1>
-      <p className="mt-1 text-ink/60">Fill in the details below — the more specific, the faster it sells.</p>
+      <p className="mt-1 text-ink/60">
+        Fill in the details below — the more specific, the faster it sells.
+      </p>
 
-      <form onSubmit={handleSubmit} className="mt-8 space-y-5 rounded-card bg-white p-6 shadow-card">
+      <form
+        onSubmit={handleSubmit}
+        className="mt-8 space-y-5 rounded-card bg-white p-6 shadow-card"
+      >
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
             <label className="text-xs font-semibold uppercase text-ink/50">Title *</label>
@@ -129,7 +136,11 @@ export default function AddItemPage() {
               onChange={(e) => handleChange("subject", e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm"
             >
-              {SUBJECTS.map((s) => <option key={s} value={s}>{s}</option>)}
+              {SUBJECTS.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
             </select>
           </div>
           <div>
@@ -148,7 +159,11 @@ export default function AddItemPage() {
               onChange={(e) => handleChange("condition", e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm"
             >
-              {CONDITIONS.map((c) => <option key={c} value={c}>{c}</option>)}
+              {CONDITIONS.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
             </select>
           </div>
           <div>
@@ -163,7 +178,9 @@ export default function AddItemPage() {
             />
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">Your area/location *</label>
+            <label className="text-xs font-semibold uppercase text-ink/50">
+              Your area/location *
+            </label>
             <input
               value={form.location}
               onChange={(e) => handleChange("location", e.target.value)}
@@ -178,7 +195,11 @@ export default function AddItemPage() {
               onChange={(e) => handleChange("university", e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm"
             >
-              {universities.map((u) => <option key={u} value={u}>{u}</option>)}
+              {universities.map((u) => (
+                <option key={u} value={u}>
+                  {u}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -206,7 +227,9 @@ export default function AddItemPage() {
         </div>
 
         <div>
-          <label className="text-xs font-semibold uppercase text-ink/50">Image URL (optional)</label>
+          <label className="text-xs font-semibold uppercase text-ink/50">
+            Image URL (optional)
+          </label>
           <input
             value={form.imageUrl}
             onChange={(e) => handleChange("imageUrl", e.target.value)}
@@ -219,7 +242,9 @@ export default function AddItemPage() {
         </div>
 
         {error && <p className="text-sm text-red-600">{error}</p>}
-        {success && <p className="text-sm text-sage">Listing created! Redirecting to your listings…</p>}
+        {success && (
+          <p className="text-sm text-sage">Listing created! Redirecting to your listings…</p>
+        )}
 
         <button
           type="submit"

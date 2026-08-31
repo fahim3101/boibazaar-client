@@ -20,8 +20,7 @@ const steps = [
   {
     number: "04",
     title: "Meet and exchange",
-    description:
-      "Meet on campus or nearby, check the book, hand over the cash. Simple as that.",
+    description: "Meet on campus or nearby, check the book, hand over the cash. Simple as that.",
   },
 ];
 

@@ -71,10 +71,7 @@ export default function Navbar() {
             </>
           ) : (
             <>
-              <Link
-                href="/login"
-                className="text-sm font-medium text-paper/90 hover:text-amber"
-              >
+              <Link href="/login" className="text-sm font-medium text-paper/90 hover:text-amber">
                 Log in
               </Link>
               <Link
@@ -118,10 +115,18 @@ export default function Navbar() {
               </button>
             ) : (
               <>
-                <Link href="/login" onClick={() => setOpen(false)} className="text-sm font-medium text-paper/90">
+                <Link
+                  href="/login"
+                  onClick={() => setOpen(false)}
+                  className="text-sm font-medium text-paper/90"
+                >
                   Log in
                 </Link>
-                <Link href="/register" onClick={() => setOpen(false)} className="text-sm font-semibold text-amber">
+                <Link
+                  href="/register"
+                  onClick={() => setOpen(false)}
+                  className="text-sm font-semibold text-amber"
+                >
                   Sign up
                 </Link>
               </>

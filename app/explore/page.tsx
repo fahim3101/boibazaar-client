@@ -105,7 +105,9 @@ function ExploreContent() {
             >
               <option value="">All subjects</option>
               {SUBJECTS.map((s) => (
-                <option key={s} value={s}>{s}</option>
+                <option key={s} value={s}>
+                  {s}
+                </option>
               ))}
             </select>
           </div>
@@ -119,7 +121,9 @@ function ExploreContent() {
             >
               <option value="">Any condition</option>
               {CONDITIONS.map((c) => (
-                <option key={c} value={c}>{c}</option>
+                <option key={c} value={c}>
+                  {c}
+                </option>
               ))}
             </select>
           </div>
@@ -165,7 +169,9 @@ function ExploreContent() {
             </div>
           ) : books.length === 0 && !error ? (
             <div className="rounded-card bg-white p-10 text-center shadow-card">
-              <p className="font-display text-lg font-semibold text-ink">No books match those filters</p>
+              <p className="font-display text-lg font-semibold text-ink">
+                No books match those filters
+              </p>
               <p className="mt-2 text-sm text-ink/60">
                 Try clearing a filter or searching a broader term.
               </p>

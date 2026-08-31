@@ -27,8 +27,13 @@ async function apiFetch(path: string, options: FetchOptions = {}) {
 }
 
 export const api = {
-  register: (payload: { name: string; email: string; password: string; university?: string; phone?: string }) =>
-    apiFetch("/auth/register", { method: "POST", body: JSON.stringify(payload) }),
+  register: (payload: {
+    name: string;
+    email: string;
+    password: string;
+    university?: string;
+    phone?: string;
+  }) => apiFetch("/auth/register", { method: "POST", body: JSON.stringify(payload) }),
 
   login: (payload: { email: string; password: string }) =>
     apiFetch("/auth/login", { method: "POST", body: JSON.stringify(payload) }),
@@ -47,11 +52,13 @@ export const api = {
   createBook: (payload: Record<string, unknown>, token: string) =>
     apiFetch("/books", { method: "POST", body: JSON.stringify(payload), token }),
 
-  deleteBook: (id: string, token: string) =>
-    apiFetch(`/books/${id}`, { method: "DELETE", token }),
+  deleteBook: (id: string, token: string) => apiFetch(`/books/${id}`, { method: "DELETE", token }),
 
-  addReview: (id: string, payload: { rating: number; comment: string; userName: string }, token: string) =>
-    apiFetch(`/books/${id}/reviews`, { method: "POST", body: JSON.stringify(payload), token }),
+  addReview: (
+    id: string,
+    payload: { rating: number; comment: string; userName: string },
+    token: string
+  ) => apiFetch(`/books/${id}/reviews`, { method: "POST", body: JSON.stringify(payload), token }),
 
   getAdminStats: (token: string) => apiFetch("/admin/stats", { token }),
 

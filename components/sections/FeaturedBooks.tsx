@@ -11,7 +11,10 @@ export default function FeaturedBooks({ books }: { books: Book[] }) {
             <span className="stamp-badge border-amber text-amber-dark">Fresh listings</span>
             <h2 className="mt-3 font-display text-3xl font-bold text-ink">Recently added books</h2>
           </div>
-          <Link href="/explore" className="hidden text-sm font-semibold text-ink hover:text-amber sm:block">
+          <Link
+            href="/explore"
+            className="hidden text-sm font-semibold text-ink hover:text-amber sm:block"
+          >
             View all →
           </Link>
         </div>
@@ -28,7 +31,10 @@ export default function FeaturedBooks({ books }: { books: Book[] }) {
           </div>
         )}
 
-        <Link href="/explore" className="mt-6 block text-sm font-semibold text-ink hover:text-amber sm:hidden">
+        <Link
+          href="/explore"
+          className="mt-6 block text-sm font-semibold text-ink hover:text-amber sm:hidden"
+        >
           View all →
         </Link>
       </div>

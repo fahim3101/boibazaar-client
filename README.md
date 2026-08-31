@@ -20,13 +20,13 @@ and study materials — built as a full-stack skills-assessment project.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 14 (App Router) |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| Charts | Recharts |
-| Auth | Firebase Authentication (Google/Facebook) + custom JWT session |
+| Layer     | Technology                                                     |
+| --------- | -------------------------------------------------------------- |
+| Framework | Next.js 14 (App Router)                                        |
+| Language  | TypeScript                                                     |
+| Styling   | Tailwind CSS                                                   |
+| Charts    | Recharts                                                       |
+| Auth      | Firebase Authentication (Google/Facebook) + custom JWT session |
 
 ## Project Structure
 
@@ -49,15 +49,15 @@ client/
 
 `.env.local` fill in:
 
-| Variable | Description |
-|---|---|
-| `NEXT_PUBLIC_API_URL` | Backend API URL + `/api` |
-| `NEXT_PUBLIC_FIREBASE_API_KEY` | From Firebase Console → Project Settings |
-| `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN` | Same |
-| `NEXT_PUBLIC_FIREBASE_PROJECT_ID` | Same |
-| `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET` | Same |
-| `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | Same |
-| `NEXT_PUBLIC_FIREBASE_APP_ID` | Same |
+| Variable                                   | Description                              |
+| ------------------------------------------ | ---------------------------------------- |
+| `NEXT_PUBLIC_API_URL`                      | Backend API URL + `/api`                 |
+| `NEXT_PUBLIC_FIREBASE_API_KEY`             | From Firebase Console → Project Settings |
+| `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`         | Same                                     |
+| `NEXT_PUBLIC_FIREBASE_PROJECT_ID`          | Same                                     |
+| `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`      | Same                                     |
+| `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | Same                                     |
+| `NEXT_PUBLIC_FIREBASE_APP_ID`              | Same                                     |
 
 ## Local Setup
 
@@ -71,25 +71,25 @@ Make sure the `boibazaar-server` backend is running first — see its README.
 
 ## Pages
 
-| Route | Access | Description |
-|---|---|---|
-| `/` | Public | Landing page |
-| `/explore` | Public | Search, filter, sort, paginate books |
-| `/books/[id]` | Public | Book details, reviews, related items |
-| `/login`, `/register` | Public | Auth, including Google/Facebook |
-| `/items/add` | Private | Post a new listing |
-| `/items/manage` | Private | View/delete your own listings |
-| `/admin` | Admin only | Moderate all listings, view all users |
-| `/about`, `/contact`, `/faq` | Public | Informational pages |
+| Route                        | Access     | Description                           |
+| ---------------------------- | ---------- | ------------------------------------- |
+| `/`                          | Public     | Landing page                          |
+| `/explore`                   | Public     | Search, filter, sort, paginate books  |
+| `/books/[id]`                | Public     | Book details, reviews, related items  |
+| `/login`, `/register`        | Public     | Auth, including Google/Facebook       |
+| `/items/add`                 | Private    | Post a new listing                    |
+| `/items/manage`              | Private    | View/delete your own listings         |
+| `/admin`                     | Admin only | Moderate all listings, view all users |
+| `/about`, `/contact`, `/faq` | Public     | Informational pages                   |
 
 ## Demo Credentials
 
-| Role | Email | Password |
-|---|---|---|
-| Student | `demo@boibazaar.com` | `Demo1234!` |
-| Admin | `admin@boibazaar.com` | `Admin1234!` |
+| Role    | Email                 | Password     |
+| ------- | --------------------- | ------------ |
+| Student | `demo@boibazaar.com`  | `Demo1234!`  |
+| Admin   | `admin@boibazaar.com` | `Admin1234!` |
 
-*(Run `npm run seed` in the backend project first to create these accounts.)*
+_(Run `npm run seed` in the backend project first to create these accounts.)_
 
 ## Deployment (Vercel)
 
@@ -100,4 +100,5 @@ Make sure the `boibazaar-server` backend is running first — see its README.
    add your Vercel domain, or social login will fail on the live site
 
 ## Author
+
 Built by **MD Fahim Rana** — [GitHub](https://github.com/fahim3101) · [LinkedIn](https://linkedin.com/in/fahim-rana)

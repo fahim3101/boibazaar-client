@@ -28,7 +28,11 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (token && user?.role === "admin") {
-      Promise.all([api.getAdminStats(token), api.getAllBooksAdmin(token), api.getAllUsersAdmin(token)])
+      Promise.all([
+        api.getAdminStats(token),
+        api.getAllBooksAdmin(token),
+        api.getAllUsersAdmin(token),
+      ])
         .then(([statsData, booksData, usersData]) => {
           setStats(statsData);
           setBooks(booksData.books);
@@ -56,7 +60,9 @@ export default function AdminPage() {
   };
 
   if (authLoading || !user || user.role !== "admin") {
-    return <div className="container-page py-20 text-center text-ink/60">Checking admin access…</div>;
+    return (
+      <div className="container-page py-20 text-center text-ink/60">Checking admin access…</div>
+    );
   }
 
   return (
@@ -120,7 +126,11 @@ export default function AdminPage() {
                 <tr key={book._id} className="border-t border-paper-dark">
                   <td className="flex items-center gap-3 p-4">
                     <div className="h-14 w-10 shrink-0 overflow-hidden rounded-sm">
-                      <BookCoverSVG title={book.title} subject={book.subject} className="h-full w-full" />
+                      <BookCoverSVG
+                        title={book.title}
+                        subject={book.subject}
+                        className="h-full w-full"
+                      />
                     </div>
                     <p className="line-clamp-1 font-semibold text-ink">{book.title}</p>
                   </td>
@@ -171,11 +181,15 @@ export default function AdminPage() {
                   <td className="p-4 font-semibold text-ink">{u.name}</td>
                   <td className="p-4 text-ink/70">{u.email}</td>
                   <td className="hidden p-4 text-ink/70 sm:table-cell">{u.university || "—"}</td>
-                  <td className="hidden p-4 capitalize text-ink/70 md:table-cell">{u.authProvider}</td>
+                  <td className="hidden p-4 capitalize text-ink/70 md:table-cell">
+                    {u.authProvider}
+                  </td>
                   <td className="p-4">
                     <span
                       className={`stamp-badge ${
-                        u.role === "admin" ? "border-amber text-amber-dark" : "border-sage text-sage"
+                        u.role === "admin"
+                          ? "border-amber text-amber-dark"
+                          : "border-sage text-sage"
                       }`}
                     >
                       {u.role}

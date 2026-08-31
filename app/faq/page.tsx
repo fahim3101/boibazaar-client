@@ -36,7 +36,9 @@ export default function FAQPage() {
     <div className="container-page max-w-3xl py-14">
       <span className="stamp-badge border-amber text-amber-dark">Help center</span>
       <h1 className="mt-3 font-display text-4xl font-bold text-ink">Frequently asked questions</h1>
-      <p className="mt-3 text-ink/60">Everything you need to know about buying and selling on BoiBazaar.</p>
+      <p className="mt-3 text-ink/60">
+        Everything you need to know about buying and selling on BoiBazaar.
+      </p>
 
       <div className="mt-8 space-y-3">
         {faqs.map((faq, i) => (
@@ -47,7 +49,9 @@ export default function FAQPage() {
               aria-expanded={openIndex === i}
             >
               <span className="font-display font-semibold text-ink">{faq.q}</span>
-              <span className="font-mono text-lg text-amber-dark">{openIndex === i ? "−" : "+"}</span>
+              <span className="font-mono text-lg text-amber-dark">
+                {openIndex === i ? "−" : "+"}
+              </span>
             </button>
             {openIndex === i && (
               <p className="px-5 pb-5 text-sm leading-relaxed text-ink/70">{faq.a}</p>

@@ -22,7 +22,9 @@ export default function TrustSafety() {
     <section className="bg-white py-16">
       <div className="container-page">
         <span className="stamp-badge border-sage text-sage">Peace of mind</span>
-        <h2 className="mt-3 font-display text-3xl font-bold text-ink">Built for safe, campus-based trades</h2>
+        <h2 className="mt-3 font-display text-3xl font-bold text-ink">
+          Built for safe, campus-based trades
+        </h2>
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {points.map((point) => (

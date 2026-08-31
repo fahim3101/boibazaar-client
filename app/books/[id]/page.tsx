@@ -88,7 +88,9 @@ export default function BookDetailsPage() {
   if (error || !book) {
     return (
       <div className="container-page py-20 text-center">
-        <p className="font-display text-xl font-semibold text-ink">{error || "Listing not found."}</p>
+        <p className="font-display text-xl font-semibold text-ink">
+          {error || "Listing not found."}
+        </p>
         <Link href="/explore" className="mt-4 inline-block text-amber-dark hover:underline">
           ← Back to Explore
         </Link>
@@ -104,7 +106,11 @@ export default function BookDetailsPage() {
           <div className="flex h-96 items-center justify-center rounded-card bg-paper-dark p-8 shadow-card">
             {book.imageUrl && activeImage === "cover" ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={book.imageUrl} alt={book.title} className="h-full w-auto rounded-sm object-contain" />
+              <img
+                src={book.imageUrl}
+                alt={book.title}
+                className="h-full w-auto rounded-sm object-contain"
+              />
             ) : (
               <BookCoverSVG
                 title={book.title}
@@ -122,7 +128,9 @@ export default function BookDetailsPage() {
                 key={v}
                 onClick={() => setActiveImage(v)}
                 className={`rounded-card border px-4 py-2 text-xs font-medium capitalize ${
-                  activeImage === v ? "border-amber bg-amber/10 text-amber-dark" : "border-ink/15 text-ink/60"
+                  activeImage === v
+                    ? "border-amber bg-amber/10 text-amber-dark"
+                    : "border-ink/15 text-ink/60"
                 }`}
               >
                 {v}
@@ -135,13 +143,16 @@ export default function BookDetailsPage() {
         <div>
           <span className="stamp-badge border-sage text-sage">{book.subject}</span>
           <h1 className="mt-3 font-display text-3xl font-bold text-ink">{book.title}</h1>
-          <p className="mt-1 text-ink/60">by {book.author} · {book.edition} Edition</p>
+          <p className="mt-1 text-ink/60">
+            by {book.author} · {book.edition} Edition
+          </p>
 
           <div className="mt-5 flex items-center gap-4">
             <p className="font-display text-3xl font-bold text-ink">৳{book.price}</p>
             {book.avgRating > 0 && (
               <span className="font-mono text-sm text-amber-dark">
-                ★ {book.avgRating.toFixed(1)} ({book.reviews.length} review{book.reviews.length !== 1 ? "s" : ""})
+                ★ {book.avgRating.toFixed(1)} ({book.reviews.length} review
+                {book.reviews.length !== 1 ? "s" : ""})
               </span>
             )}
           </div>
@@ -164,7 +175,11 @@ export default function BookDetailsPage() {
             <div>
               <p className="text-xs uppercase text-ink/40">Posted</p>
               <p className="text-sm font-semibold text-ink">
-                {new Date(book.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                {new Date(book.createdAt).toLocaleDateString("en-GB", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })}
               </p>
             </div>
           </div>
@@ -172,7 +187,10 @@ export default function BookDetailsPage() {
           <div className="mt-6 rounded-card border border-paper-dark p-5">
             <p className="text-xs uppercase text-ink/40">Seller</p>
             <p className="mt-1 font-display font-semibold text-ink">{book.sellerName}</p>
-            <a href={`mailto:${book.sellerEmail}`} className="text-sm text-amber-dark hover:underline">
+            <a
+              href={`mailto:${book.sellerEmail}`}
+              className="text-sm text-amber-dark hover:underline"
+            >
               {book.sellerEmail}
             </a>
           </div>
@@ -184,14 +202,18 @@ export default function BookDetailsPage() {
         <div>
           <h2 className="font-display text-2xl font-bold text-ink">Reviews &amp; ratings</h2>
           {book.reviews.length === 0 ? (
-            <p className="mt-3 text-sm text-ink/60">No reviews yet. Be the first to share your experience.</p>
+            <p className="mt-3 text-sm text-ink/60">
+              No reviews yet. Be the first to share your experience.
+            </p>
           ) : (
             <div className="mt-4 space-y-4">
               {book.reviews.map((r, i) => (
                 <div key={i} className="rounded-card bg-white p-4 shadow-card">
                   <div className="flex items-center justify-between">
                     <p className="font-semibold text-ink">{r.userName}</p>
-                    <span className="font-mono text-xs text-amber-dark">{"★".repeat(r.rating)}</span>
+                    <span className="font-mono text-xs text-amber-dark">
+                      {"★".repeat(r.rating)}
+                    </span>
                   </div>
                   <p className="mt-2 text-sm text-ink/70">{r.comment}</p>
                 </div>
@@ -202,7 +224,10 @@ export default function BookDetailsPage() {
 
         <div>
           <h2 className="font-display text-2xl font-bold text-ink">Leave a review</h2>
-          <form onSubmit={handleReviewSubmit} className="mt-4 space-y-4 rounded-card bg-white p-5 shadow-card">
+          <form
+            onSubmit={handleReviewSubmit}
+            className="mt-4 space-y-4 rounded-card bg-white p-5 shadow-card"
+          >
             <div>
               <label className="text-xs font-semibold uppercase text-ink/50">Rating</label>
               <div className="mt-2 flex gap-2">

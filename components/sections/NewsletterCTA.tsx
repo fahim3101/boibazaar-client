@@ -21,11 +21,14 @@ export default function NewsletterCTA() {
           Get notified when new books hit your subject
         </h2>
         <p className="max-w-md text-sm text-paper/70">
-          One email a week with the latest listings in the subjects you care about. No spam, unsubscribe anytime.
+          One email a week with the latest listings in the subjects you care about. No spam,
+          unsubscribe anytime.
         </p>
 
         {subscribed ? (
-          <p className="font-mono text-sm text-amber">You&apos;re subscribed — see you in your inbox.</p>
+          <p className="font-mono text-sm text-amber">
+            You&apos;re subscribed — see you in your inbox.
+          </p>
         ) : (
           <form onSubmit={handleSubmit} className="flex w-full max-w-md flex-col gap-2 sm:flex-row">
             <input

@@ -23,8 +23,8 @@ export default function ContactPage() {
         <span className="stamp-badge border-sage text-sage">Reach out</span>
         <h1 className="mt-3 font-display text-4xl font-bold text-ink">Contact us</h1>
         <p className="mt-4 max-w-md leading-relaxed text-ink/70">
-          Questions, feedback, or found a listing that looks off? Send a message
-          and we&apos;ll get back to you.
+          Questions, feedback, or found a listing that looks off? Send a message and we&apos;ll get
+          back to you.
         </p>
 
         <div className="mt-8 space-y-4 text-sm text-ink/70">
@@ -47,7 +47,9 @@ export default function ContactPage() {
         {sent ? (
           <div className="flex h-full flex-col items-center justify-center py-10 text-center">
             <p className="font-display text-lg font-semibold text-ink">Message sent</p>
-            <p className="mt-2 text-sm text-ink/60">Thanks for reaching out — we&apos;ll reply soon.</p>
+            <p className="mt-2 text-sm text-ink/60">
+              Thanks for reaching out — we&apos;ll reply soon.
+            </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
