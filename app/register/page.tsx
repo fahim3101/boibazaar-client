@@ -39,8 +39,8 @@ export default function RegisterPage() {
     try {
       await register(name, email, password, university);
       router.push("/explore");
-    } catch (err: any) {
-      setError(err.message || "Registration failed. Please try again.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Registration failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -65,9 +65,14 @@ export default function RegisterPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">Full name</label>
+            <label htmlFor="register-name" className="text-xs font-semibold uppercase text-ink/50">
+              Full name
+            </label>
             <input
+              id="register-name"
               type="text"
+              required
+              autoComplete="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
@@ -75,9 +80,14 @@ export default function RegisterPage() {
             />
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">Email</label>
+            <label htmlFor="register-email" className="text-xs font-semibold uppercase text-ink/50">
+              Email
+            </label>
             <input
+              id="register-email"
               type="email"
+              required
+              autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
@@ -85,11 +95,16 @@ export default function RegisterPage() {
             />
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">
+            <label
+              htmlFor="register-university"
+              className="text-xs font-semibold uppercase text-ink/50"
+            >
               University (optional)
             </label>
             <input
+              id="register-university"
               type="text"
+              autoComplete="organization"
               value={university}
               onChange={(e) => setUniversity(e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
@@ -97,9 +112,17 @@ export default function RegisterPage() {
             />
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">Password</label>
+            <label
+              htmlFor="register-password"
+              className="text-xs font-semibold uppercase text-ink/50"
+            >
+              Password
+            </label>
             <input
+              id="register-password"
               type="password"
+              required
+              autoComplete="new-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
@@ -107,9 +130,17 @@ export default function RegisterPage() {
             />
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">Confirm password</label>
+            <label
+              htmlFor="register-confirm"
+              className="text-xs font-semibold uppercase text-ink/50"
+            >
+              Confirm password
+            </label>
             <input
+              id="register-confirm"
               type="password"
+              required
+              autoComplete="new-password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
@@ -117,7 +148,11 @@ export default function RegisterPage() {
             />
           </div>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && (
+            <p role="alert" className="text-sm text-red-600">
+              {error}
+            </p>
+          )}
 
           <button
             type="submit"
