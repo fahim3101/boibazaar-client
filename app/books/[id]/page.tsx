@@ -125,6 +125,7 @@ export default function BookDetailsPage() {
               <img
                 src={book.imageUrl}
                 alt={book.title}
+                loading="lazy"
                 className="h-full w-auto rounded-sm object-contain"
               />
             ) : (

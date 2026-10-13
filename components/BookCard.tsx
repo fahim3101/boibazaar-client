@@ -18,6 +18,7 @@ export default function BookCard({ book }: { book: Book }) {
           <img
             src={book.imageUrl}
             alt={`Cover of ${book.title}`}
+            loading="lazy"
             className="h-full w-auto rounded-sm object-cover shadow-sm"
           />
         ) : (
