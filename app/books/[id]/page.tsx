@@ -142,7 +142,10 @@ export default function BookDetailsPage() {
             {(["cover", "spine", "back"] as const).map((v) => (
               <button
                 key={v}
+                type="button"
                 onClick={() => setActiveImage(v)}
+                aria-pressed={activeImage === v}
+                aria-label={`Show ${v} view`}
                 className={`rounded-card border px-4 py-2 text-xs font-medium capitalize ${
                   activeImage === v
                     ? "border-amber bg-amber/10 text-amber-dark"
@@ -223,8 +226,11 @@ export default function BookDetailsPage() {
             </p>
           ) : (
             <div className="mt-4 space-y-4">
-              {book.reviews.map((r, i) => (
-                <div key={i} className="rounded-card bg-white p-4 shadow-card">
+              {book.reviews.map((r) => (
+                <div
+                  key={`${r.userName}-${r.createdAt}`}
+                  className="rounded-card bg-white p-4 shadow-card"
+                >
                   <div className="flex items-center justify-between">
                     <p className="font-semibold text-ink">{r.userName}</p>
                     <span className="font-mono text-xs text-amber-dark">
