@@ -57,7 +57,10 @@ function ExploreContent() {
         setPages(data.pages);
         setTotal(data.total);
       })
-      .catch(() => setError("Could not load listings. Please check your connection and try again."))
+      .catch((err: unknown) => {
+        console.error("Explore product fetch failed:", err);
+        setError(err instanceof Error ? err.message : "Could not load listings. Please try again.");
+      })
       .finally(() => setLoading(false));
   }, [search, subject, condition, sort, page]);
 

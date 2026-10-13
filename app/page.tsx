@@ -10,11 +10,16 @@ import NewsletterCTA from "@/components/sections/NewsletterCTA";
 import { api } from "@/lib/api";
 import { Book, BooksResponse } from "@/types";
 
+// Cache landing data for 60s so a slow/cold API doesn't blank the homepage
+// on every request. Failed fetches fall back to an empty list (logged).
+export const revalidate = 60;
+
 async function getLandingData() {
   try {
     const data: BooksResponse = await api.getBooks("limit=50&sort=newest");
     return data.books;
-  } catch {
+  } catch (error) {
+    console.error("Homepage product fetch failed:", error);
     return [] as Book[];
   }
 }
