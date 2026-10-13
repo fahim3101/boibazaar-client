@@ -28,8 +28,8 @@ export default function LoginPage() {
     try {
       await login(email, password);
       router.push("/explore");
-    } catch (err: any) {
-      setError(err.message || "Login failed. Please check your credentials.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Login failed. Please check your credentials.");
     } finally {
       setLoading(false);
     }
@@ -68,9 +68,14 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="mt-5 space-y-4">
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">Email</label>
+            <label htmlFor="login-email" className="text-xs font-semibold uppercase text-ink/50">
+              Email
+            </label>
             <input
+              id="login-email"
               type="email"
+              required
+              autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
@@ -78,9 +83,14 @@ export default function LoginPage() {
             />
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">Password</label>
+            <label htmlFor="login-password" className="text-xs font-semibold uppercase text-ink/50">
+              Password
+            </label>
             <input
+              id="login-password"
               type="password"
+              required
+              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
@@ -88,7 +98,11 @@ export default function LoginPage() {
             />
           </div>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && (
+            <p role="alert" className="text-sm text-red-600">
+              {error}
+            </p>
+          )}
 
           <button
             type="submit"
