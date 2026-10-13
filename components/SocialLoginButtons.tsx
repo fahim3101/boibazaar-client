@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 
-function friendlyFirebaseError(err: any): string {
-  const code = err?.code || "";
+function friendlyFirebaseError(err: unknown): string {
+  const code = err instanceof Error && "code" in err ? String((err as { code: unknown }).code) : "";
   if (code.includes("popup-closed-by-user")) return "Sign-in was cancelled.";
   if (code.includes("account-exists-with-different-credential")) {
     return "An account already exists with this email using a different sign-in method.";
@@ -16,7 +16,9 @@ function friendlyFirebaseError(err: any): string {
   ) {
     return "Social login isn't configured yet. Add your Firebase keys to .env.local (see README).";
   }
-  return err?.message || "Social sign-in failed. Please try again.";
+  return err instanceof Error && err.message
+    ? err.message
+    : "Social sign-in failed. Please try again.";
 }
 
 export default function SocialLoginButtons() {
@@ -31,7 +33,7 @@ export default function SocialLoginButtons() {
     try {
       await loginWithGoogle();
       router.push("/explore");
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(friendlyFirebaseError(err));
     } finally {
       setLoadingProvider(null);
@@ -44,7 +46,7 @@ export default function SocialLoginButtons() {
     try {
       await loginWithFacebook();
       router.push("/explore");
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(friendlyFirebaseError(err));
     } finally {
       setLoadingProvider(null);
@@ -94,7 +96,11 @@ export default function SocialLoginButtons() {
         </button>
       </div>
 
-      {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+      {error && (
+        <p role="alert" className="mt-3 text-sm text-red-600">
+          {error}
+        </p>
+      )}
     </div>
   );
 }
