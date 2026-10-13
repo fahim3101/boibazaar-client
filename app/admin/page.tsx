@@ -22,25 +22,33 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (!authLoading && (!user || user.role !== "admin")) {
-      router.push(user ? "/explore" : "/login");
+      router.replace(user ? "/explore" : "/login");
     }
   }, [authLoading, user, router]);
 
+  const loadAdminData = () => {
+    if (!token || user?.role !== "admin") return;
+    setLoading(true);
+    setError("");
+    Promise.all([
+      api.getAdminStats(token),
+      api.getAllBooksAdmin(token),
+      api.getAllUsersAdmin(token),
+    ])
+      .then(([statsData, booksData, usersData]) => {
+        setStats(statsData);
+        setBooks(booksData.books);
+        setUsers(usersData.users);
+      })
+      .catch((err: unknown) =>
+        setError(err instanceof Error ? err.message : "Could not load admin data.")
+      )
+      .finally(() => setLoading(false));
+  };
+
   useEffect(() => {
-    if (token && user?.role === "admin") {
-      Promise.all([
-        api.getAdminStats(token),
-        api.getAllBooksAdmin(token),
-        api.getAllUsersAdmin(token),
-      ])
-        .then(([statsData, booksData, usersData]) => {
-          setStats(statsData);
-          setBooks(booksData.books);
-          setUsers(usersData.users);
-        })
-        .catch(() => setError("Could not load admin data."))
-        .finally(() => setLoading(false));
-    }
+    loadAdminData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token, user]);
 
   const handleDelete = async (id: string) => {
@@ -52,8 +60,8 @@ export default function AdminPage() {
       await api.adminDeleteBook(id, token);
       setBooks((prev) => prev.filter((b) => b._id !== id));
       setStats((prev) => ({ ...prev, totalBooks: prev.totalBooks - 1 }));
-    } catch (err: any) {
-      setError(err.message || "Could not delete listing.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Could not delete listing.");
     } finally {
       setDeletingId(null);
     }
@@ -61,7 +69,13 @@ export default function AdminPage() {
 
   if (authLoading || !user || user.role !== "admin") {
     return (
-      <div className="container-page py-20 text-center text-ink/60">Checking admin access…</div>
+      <div className="container-page py-10" aria-busy="true" aria-label="Checking admin access">
+        <div className="h-8 w-56 animate-pulse rounded bg-paper-dark" />
+        <div className="mt-6 grid grid-cols-2 gap-4 sm:max-w-md">
+          <div className="h-24 animate-pulse rounded-card bg-white shadow-card" />
+          <div className="h-24 animate-pulse rounded-card bg-white shadow-card" />
+        </div>
+      </div>
     );
   }
 
@@ -101,7 +115,20 @@ export default function AdminPage() {
         </button>
       </div>
 
-      {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
+      {error && (
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <p role="alert" className="text-sm text-red-600">
+            {error}
+          </p>
+          <button
+            type="button"
+            onClick={loadAdminData}
+            className="rounded-card border border-ink/15 px-3 py-1.5 text-xs font-medium hover:border-amber hover:text-amber-dark"
+          >
+            Try again
+          </button>
+        </div>
+      )}
 
       {loading ? (
         <div className="mt-6 space-y-3">
