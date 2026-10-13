@@ -70,8 +70,8 @@ export default function BookDetailsPage() {
       setComment("");
       setRating(5);
       loadBook();
-    } catch (err: any) {
-      setReviewError(err.message || "Could not submit your review.");
+    } catch (err: unknown) {
+      setReviewError(err instanceof Error ? err.message : "Could not submit your review.");
     } finally {
       setSubmitting(false);
     }
@@ -251,8 +251,18 @@ export default function BookDetailsPage() {
             className="mt-4 space-y-4 rounded-card bg-white p-5 shadow-card"
           >
             <div>
-              <label className="text-xs font-semibold uppercase text-ink/50">Rating</label>
-              <div className="mt-2 flex gap-2">
+              <label
+                htmlFor="review-rating"
+                className="text-xs font-semibold uppercase text-ink/50"
+              >
+                Rating
+              </label>
+              <div
+                id="review-rating"
+                className="mt-2 flex gap-2"
+                role="radiogroup"
+                aria-label="Rating"
+              >
                 {[1, 2, 3, 4, 5].map((n) => (
                   <button
                     type="button"
@@ -268,16 +278,27 @@ export default function BookDetailsPage() {
               </div>
             </div>
             <div>
-              <label className="text-xs font-semibold uppercase text-ink/50">Comment</label>
+              <label
+                htmlFor="review-comment"
+                className="text-xs font-semibold uppercase text-ink/50"
+              >
+                Comment
+              </label>
               <textarea
+                id="review-comment"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 rows={3}
+                maxLength={500}
                 placeholder="How was the book's condition and the exchange experience?"
                 className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
               />
             </div>
-            {reviewError && <p className="text-sm text-red-600">{reviewError}</p>}
+            {reviewError && (
+              <p role="alert" className="text-sm text-red-600">
+                {reviewError}
+              </p>
+            )}
             <button
               type="submit"
               disabled={submitting}
