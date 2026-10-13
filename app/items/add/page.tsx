@@ -119,8 +119,12 @@ export default function AddItemPage() {
       >
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">Title *</label>
+            <label htmlFor="sell-title" className="text-xs font-semibold uppercase text-ink/50">
+              Title *
+            </label>
             <input
+              id="sell-title"
+              required
               value={form.title}
               onChange={(e) => handleChange("title", e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
@@ -128,8 +132,12 @@ export default function AddItemPage() {
             />
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">Author *</label>
+            <label htmlFor="sell-author" className="text-xs font-semibold uppercase text-ink/50">
+              Author *
+            </label>
             <input
+              id="sell-author"
+              required
               value={form.author}
               onChange={(e) => handleChange("author", e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
@@ -174,10 +182,14 @@ export default function AddItemPage() {
             </select>
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">Price (৳) *</label>
+            <label htmlFor="sell-price" className="text-xs font-semibold uppercase text-ink/50">
+              Price (৳) *
+            </label>
             <input
+              id="sell-price"
               type="number"
               min="1"
+              required
               value={form.price}
               onChange={(e) => handleChange("price", e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
@@ -185,10 +197,12 @@ export default function AddItemPage() {
             />
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase text-ink/50">
+            <label htmlFor="sell-location" className="text-xs font-semibold uppercase text-ink/50">
               Your area/location *
             </label>
             <input
+              id="sell-location"
+              required
               value={form.location}
               onChange={(e) => handleChange("location", e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
@@ -212,8 +226,12 @@ export default function AddItemPage() {
         </div>
 
         <div>
-          <label className="text-xs font-semibold uppercase text-ink/50">Short description *</label>
+          <label htmlFor="sell-short" className="text-xs font-semibold uppercase text-ink/50">
+            Short description *
+          </label>
           <input
+            id="sell-short"
+            required
             value={form.shortDescription}
             onChange={(e) => handleChange("shortDescription", e.target.value)}
             maxLength={160}
@@ -223,11 +241,16 @@ export default function AddItemPage() {
         </div>
 
         <div>
-          <label className="text-xs font-semibold uppercase text-ink/50">Full description *</label>
+          <label htmlFor="sell-full" className="text-xs font-semibold uppercase text-ink/50">
+            Full description *
+          </label>
           <textarea
+            id="sell-full"
+            required
             value={form.fullDescription}
             onChange={(e) => handleChange("fullDescription", e.target.value)}
             rows={4}
+            maxLength={2000}
             className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
             placeholder="Describe the book's condition, any markings, what's included, etc."
           />
@@ -248,7 +271,11 @@ export default function AddItemPage() {
           </p>
         </div>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && (
+          <p role="alert" className="text-sm text-red-600">
+            {error}
+          </p>
+        )}
         {success && (
           <p className="text-sm text-sage">Listing created! Redirecting to your listings…</p>
         )}
