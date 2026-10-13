@@ -28,13 +28,20 @@ export default function BookDetailsPage() {
 
   const loadBook = () => {
     setLoading(true);
+    setError("");
     api
       .getBookById(id)
       .then((data) => {
         setBook(data.book);
         setRelated(data.related);
       })
-      .catch(() => setError("This listing could not be found. It may have been sold or removed."))
+      .catch((err: unknown) =>
+        setError(
+          err instanceof Error
+            ? err.message
+            : "This listing could not be found. It may have been sold or removed."
+        )
+      )
       .finally(() => setLoading(false));
   };
 
@@ -91,9 +98,18 @@ export default function BookDetailsPage() {
         <p className="font-display text-xl font-semibold text-ink">
           {error || "Listing not found."}
         </p>
-        <Link href="/explore" className="mt-4 inline-block text-amber-dark hover:underline">
-          ← Back to Explore
-        </Link>
+        <div className="mt-4 flex items-center justify-center gap-4">
+          <button
+            type="button"
+            onClick={loadBook}
+            className="rounded-card bg-ink px-5 py-2.5 text-sm font-semibold text-paper hover:bg-amber hover:text-ink"
+          >
+            Try again
+          </button>
+          <Link href="/explore" className="text-sm text-amber-dark hover:underline">
+            ← Back to Explore
+          </Link>
+        </div>
       </div>
     );
   }
