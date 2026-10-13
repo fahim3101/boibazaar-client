@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    # Major bumps of the build/test toolchain break Vercel preview
+    # installs (e.g. vitest 1 -> 5 needs Node >= 22.12 + @types/node ^22,
+    # next 14 -> 16 needs React 19, eslint 8 -> 10 needs flat config).
+    # Allow only patch + minor here; majors get a deliberate manual PR.
+    ignore:
+      - dependency-name: vitest
+        update-types:
+          - version-update:semver-major
+      - dependency-name: vite
+        update-types:
+          - version-update:semver-major
+      - dependency-name: next
+        update-types:
+          - version-update:semver-major
+      - dependency-name: eslint
+        update-types:
+          - version-update:semver-major
+      - dependency-name: eslint-config-next
+        update-types:
+          - version-update:semver-major
