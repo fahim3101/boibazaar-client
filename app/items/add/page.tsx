@@ -41,7 +41,7 @@ export default function AddItemPage() {
 
   useEffect(() => {
     if (!authLoading && !user) {
-      router.push("/login");
+      router.replace("/login");
     }
   }, [authLoading, user, router]);
 
@@ -85,8 +85,8 @@ export default function AddItemPage() {
       );
       setSuccess(true);
       setTimeout(() => router.push("/items/manage"), 1200);
-    } catch (err: any) {
-      setError(err.message || "Could not create the listing.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Could not create the listing.");
     } finally {
       setSubmitting(false);
     }
@@ -94,7 +94,14 @@ export default function AddItemPage() {
 
   if (authLoading || !user) {
     return (
-      <div className="container-page py-20 text-center text-ink/60">Checking your session…</div>
+      <div
+        className="container-page max-w-2xl py-10"
+        aria-busy="true"
+        aria-label="Checking session"
+      >
+        <div className="h-8 w-48 animate-pulse rounded bg-paper-dark" />
+        <div className="mt-4 h-96 animate-pulse rounded-card bg-white shadow-card" />
+      </div>
     );
   }
 
@@ -170,7 +177,7 @@ export default function AddItemPage() {
             <label className="text-xs font-semibold uppercase text-ink/50">Price (৳) *</label>
             <input
               type="number"
-              min="0"
+              min="1"
               value={form.price}
               onChange={(e) => handleChange("price", e.target.value)}
               className="mt-2 w-full rounded-card border border-ink/15 p-3 text-sm focus:border-amber"
