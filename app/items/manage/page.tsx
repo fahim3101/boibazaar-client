@@ -19,19 +19,30 @@ export default function ManageItemsPage() {
 
   useEffect(() => {
     if (!authLoading && !user) {
-      router.push("/login");
+      router.replace("/login");
     }
   }, [authLoading, user, router]);
 
-  useEffect(() => {
-    if (token) {
-      api
-        .getMyBooks(token)
-        .then((data) => setBooks(data.books))
-        .catch(() => setError("Could not load your listings."))
-        .finally(() => setLoading(false));
+  const loadListings = () => {
+    if (!token) {
+      setLoading(false);
+      return;
     }
-  }, [token]);
+    setLoading(true);
+    setError("");
+    api
+      .getMyBooks(token)
+      .then((data) => setBooks(data.books))
+      .catch((err: unknown) =>
+        setError(err instanceof Error ? err.message : "Could not load your listings.")
+      )
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    if (!authLoading && user) loadListings();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token, authLoading, user]);
 
   const handleDelete = async (id: string) => {
     if (!token) return;
@@ -41,8 +52,8 @@ export default function ManageItemsPage() {
     try {
       await api.deleteBook(id, token);
       setBooks((prev) => prev.filter((b) => b._id !== id));
-    } catch (err: any) {
-      setError(err.message || "Could not delete this listing.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Could not delete this listing.");
     } finally {
       setDeletingId(null);
     }
@@ -50,7 +61,14 @@ export default function ManageItemsPage() {
 
   if (authLoading || !user) {
     return (
-      <div className="container-page py-20 text-center text-ink/60">Checking your session…</div>
+      <div className="container-page py-10" aria-busy="true" aria-label="Checking session">
+        <div className="h-8 w-48 animate-pulse rounded bg-paper-dark" />
+        <div className="mt-8 space-y-3">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="h-24 animate-pulse rounded-card bg-white shadow-card" />
+          ))}
+        </div>
+      </div>
     );
   }
 
@@ -72,7 +90,20 @@ export default function ManageItemsPage() {
         </Link>
       </div>
 
-      {error && <p className="mt-6 text-sm text-red-600">{error}</p>}
+      {error && (
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <p role="alert" className="text-sm text-red-600">
+            {error}
+          </p>
+          <button
+            type="button"
+            onClick={loadListings}
+            className="rounded-card border border-ink/15 px-3 py-1.5 text-xs font-medium hover:border-amber hover:text-amber-dark"
+          >
+            Try again
+          </button>
+        </div>
+      )}
 
       {loading ? (
         <div className="mt-8 space-y-3">
