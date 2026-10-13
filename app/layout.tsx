@@ -57,7 +57,7 @@ export const metadata: Metadata = {
       "A peer-to-peer marketplace where students buy and sell secondhand textbooks at a fraction of the bookstore price.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "BoiBazaar - Used Textbook Exchange",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     title: "BoiBazaar | Buy & Sell Used Textbooks",
     description:
       "Student-to-student marketplace for secondhand textbooks across Bangladeshi universities.",
-    images: ["/og-image.png"],
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
   },
   manifest: "/manifest.webmanifest",
   alternates: {
